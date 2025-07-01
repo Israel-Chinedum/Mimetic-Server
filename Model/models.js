@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const dbConnection = () => {
   mongoose
-    .connect(
-      "mongodb+srv://fastarfavour:cof9ymwYj73TzZGH@mockapi.7klafem.mongodb.net/MockAPI?retryWrites=true&w=majority&appName=MockAPI"
-    )
+    .connect(process.env.MONGODB_URI)
     .then(() => console.log("Database connected!"))
-    .catch((error) => console.log("Unable to connect to database!"));
+    .catch((error) => console.log(`Unable to connect to database!, ${error}`));
 };
 
 const apiSchema = mongoose.Schema(
