@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 export const dbConnection = () => {
   mongoose
     .connect(
-      "mongodb+srv://fastarfavour:cof9ymwYj73TzZGH@mockapi.7klafem.mongodb.net/?retryWrites=true&w=majority&appName=MockAPI"
+      "mongodb+srv://fastarfavour:cof9ymwYj73TzZGH@mockapi.7klafem.mongodb.net/MockAPI?retryWrites=true&w=majority&appName=MockAPI"
     )
     .then(() => console.log("Database connected!"))
     .catch((error) => console.log("Unable to connect to database!"));
