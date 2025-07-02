@@ -4,7 +4,7 @@ import { apiModel } from "../Model/models.js";
 
 dotenv.config();
 
-export const mockapiRoute = async (req, res) => {
+export const mimeticapiRoute = async (req, res) => {
   const { data } = req.body;
   try {
     const jsonData = JSON.stringify(data);
