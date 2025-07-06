@@ -14,6 +14,7 @@ const apiSchema = mongoose.Schema(
   {
     key: { type: String, required: true },
     Data: { type: String, required: true },
+    createdAt: { type: Date, required: true },
   },
   { collection: "APIData" }
 );

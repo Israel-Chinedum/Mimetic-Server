@@ -22,6 +22,7 @@ export const mimeticapiRoute = async (req, res) => {
     await apiModel({
       key,
       Data: jsonData,
+      createdAt: new Date(Date.now()),
     }).save();
     res.json({ endpoint: `${process.env.BASE_URL}/${key}` });
   } catch (error) {
