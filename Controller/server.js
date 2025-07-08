@@ -13,9 +13,9 @@ app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin) {
-        return callback(null, false);
+        return callback(null, "https://mimeticapi.onrender.com");
       }
-      callback(null, origin);
+      callback(null, "https://mimeticapi.onrender.com");
     },
     credentials: true,
   })
