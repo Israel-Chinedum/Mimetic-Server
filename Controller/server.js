@@ -12,6 +12,9 @@ app.use(express.json());
 app.use(
   cors({
     origin: (origin, callback) => {
+      if (!origin) {
+        return callback(null, false);
+      }
       callback(null, origin);
     },
     credentials: true,
