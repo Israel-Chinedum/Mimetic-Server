@@ -7,6 +7,12 @@ const PORT = process.env.PORT || 2400;
 
 const app = express();
 
+// Render Health check route
+app.get("/health", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*"); // Allow any origin for health checks
+  res.sendStatus(200);
+});
+
 // Manually set headers
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
