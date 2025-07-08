@@ -26,8 +26,8 @@ app.use(
   cors({
     origin: (origin, callback) => {
       // Allow only your frontend
-      const allowed = origin;
-      callback(null, allowed); // same for both cases
+      if (!origin) return callback(null, "https://mimeticapi.onrender.com");
+      callback(null, "https://mimeticapi.onrender.com");
     },
     credentials: true,
   })
