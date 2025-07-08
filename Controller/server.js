@@ -3,26 +3,32 @@ import cors from "cors";
 import { dbConnection } from "../Model/models.js";
 import { endpoints } from "./endpoints.js";
 
-dbConnection();
+const PORT = process.env.PORT || 2400;
+
 const app = express();
 
-app.listen(PORT, () => console.log(`Port ${PORT} is now active!`));
-
+// CORS setup
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin) {
-        return callback(null, "https://mimeticapi.onrender.com");
-      }
-      callback(null, "https://mimeticapi.onrender.com");
+      // Allow only your frontend
+      const allowed = "https://mimeticapi.onrender.com";
+      callback(null, allowed); // same for both cases
     },
     credentials: true,
   })
 );
 
-app.options("*", cors());
-const PORT = process.env.PORT || 2400;
-
+// JSON body parser
 app.use(express.json());
 
+// Your API routes
 endpoints(app);
+
+// Start the server **AFTER everything is ready**
+const startServer = async () => {
+  await dbConnection();
+  app.listen(PORT, () => console.log(`Port ${PORT} is now active!`));
+};
+
+startServer().catch((error) => console.log(error));
