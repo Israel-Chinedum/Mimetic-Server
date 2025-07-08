@@ -5,6 +5,9 @@ import { endpoints } from "./endpoints.js";
 
 dbConnection();
 const app = express();
+
+app.listen(PORT, () => console.log(`Port ${PORT} is now active!`));
+
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -16,9 +19,9 @@ app.use(
     credentials: true,
   })
 );
+
 app.options("*", cors());
 const PORT = process.env.PORT || 2400;
-app.listen(PORT, () => console.log(`Port ${PORT} is now active!`));
 
 app.use(express.json());
 
